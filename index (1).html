@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Velvet CV — Craft Your Story | by Velvet Pages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet"/>
+<style>
+/* ============================================================
+   VELVET CV — ROOT & RESET
+   ============================================================ */
+:root {
+  --ink: #1a1008;
+  --parchment: #f5efe3;
+  --cream: #faf7f0;
+  --gold: #c9973a;
+  --gold-light: #e8c97a;
+  --gold-muted: #8a6520;
+  --rust: #9b3a22;
+  --sage: #4a6741;
+  --velvet-red: #7a1c2e;
+  --warm-grey: #8a7d6b;
+  --border: rgba(201,151,58,0.25);
+  --shadow: 0 8px 40px rgba(26,16,8,0.12);
+  --shadow-lg: 0 20px 80px rgba(26,16,8,0.18);
+  --r: 4px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  background:var(--cream);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+  cursor:default;
+}
+::selection{background:var(--gold-light);color:var(--ink)}
+
+/* ============================================================
+   GRAIN OVERLAY
+   ============================================================ */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;opacity:.5;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--parchment)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ============================================================
+   LANDING
+   ============================================================ */
+#landing{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  position:relative;
+  background:var(--ink);
+  overflow:hidden;
+  padding:2rem;
+}
+.landing-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(201,151,58,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 70%, rgba(122,28,46,0.08) 0%, transparent 60%),
+    var(--ink);
+}
+.ornament-top{
+  position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+}
+.ornament-bottom{
+  position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg, transparent, var(--gold-muted), transparent);
+}
+.brand-mark{
+  font-family:'Josefin Sans',sans-serif;
+  font-weight:200;letter-spacing:.5em;font-size:.75rem;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:2rem;opacity:.8;
+  animation:fadeUp .8s ease both;
+}
+.landing-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,9vw,7rem);
+  font-weight:800;
+  color:var(--parchment);
+  line-height:1;
+  text-align:center;
+  animation:fadeUp .9s .1s ease both;
+}
+.landing-title em{
+  font-style:italic;color:var(--gold);
+}
+.landing-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,2.5vw,1.4rem);
+  color:rgba(245,239,227,0.55);
+  margin-top:1.25rem;
+  text-align:center;letter-spacing:.05em;
+  animation:fadeUp 1s .2s ease both;
+  max-width:480px;
+}
+.divider-gold{
+  display:flex;align-items:center;gap:1rem;
+  margin:2.5rem 0;
+  animation:fadeUp 1s .3s ease both;
+  width:min(360px,80vw);
+}
+.divider-gold::before,.divider-gold::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+.divider-gold::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.divider-diamond{
+  width:8px;height:8px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.75rem;
+  padding:1rem 2.5rem;
+  background:var(--gold);color:var(--ink);
+  font-family:'Josefin Sans',sans-serif;
+  font-weight:400;font-size:.875rem;letter-spacing:.15em;text-transform:uppercase;
+  border:none;cursor:pointer;
+  clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition:all .3s ease;
+  animation:fadeUp 1s .4s ease both;
+  position:relative;overflow:hidden;
+}
+.btn-primary::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+  transform:translateX(-100%);transition:transform .5s ease;
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,151,58,.35)}
+.btn-primary:hover::after{transform:translateX(100%)}
+.landing-stats{
+  display:flex;gap:3rem;margin-top:3rem;
+  animation:fadeUp 1s .5s ease both;
+}
+.stat{text-align:center}
+.stat-num{
+  font-family:'Playfair Display',serif;font-size:2rem;
+  color:var(--gold);font-weight:600;
+}
+.stat-lbl{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.65rem;letter-spacing:.2em;color:rgba(245,239,227,.4);
+  text-transform:uppercase;margin-top:.2rem;
+}
+.scroll-hint{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  opacity:.4;animation:pulse 2s infinite;
+}
+.scroll-hint span{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.65rem;letter-spacing:.2em;color:var(--parchment);text-transform:uppercase;
+}
+.scroll-arrow{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent)}
+
+/* ============================================================
+   QUOTE BANNER
+   ============================================================ */
+.quote-banner{
+  background:var(--parchment);
+  padding:4rem 2rem;
+  text-align:center;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.quote-banner::before{
+  content:'\201C';
+  font-family:'Playfair Display',serif;
+  font-size:20rem;color:rgba(201,151,58,.06);
+  position:absolute;top:-4rem;left:2rem;line-height:1;
+  pointer-events:none;
+}
+.quote-text{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.2rem,3vw,1.8rem);
+  font-style:italic;color:var(--ink);
+  max-width:700px;margin:0 auto;line-height:1.6;
+  position:relative;z-index:1;
+}
+.quote-attr{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.75rem;letter-spacing:.2em;
+  color:var(--gold);text-transform:uppercase;
+  margin-top:1.5rem;
+}
+
+/* ============================================================
+   WIZARD WRAPPER
+   ============================================================ */
+#wizard{display:none;min-height:100vh;background:var(--cream);}
+#wizard.active{display:block;}
+
+.wizard-nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(250,247,240,.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:.75rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-brand{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;color:var(--ink);font-weight:600;
+}
+.nav-brand span{color:var(--gold)}
+.progress-track{
+  flex:1;max-width:400px;
+  height:3px;background:rgba(201,151,58,.15);
+  margin:0 2rem;border-radius:2px;overflow:hidden;
+}
+.progress-fill{
+  height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1);
+}
+.progress-text{
+  font-family:'DM Mono',monospace;
+  font-size:.7rem;color:var(--warm-grey);letter-spacing:.05em;
+  white-space:nowrap;
+}
+
+/* ============================================================
+   STEP CONTAINER
+   ============================================================ */
+.step{
+  display:none;
+  min-height:calc(100vh - 60px);
+  padding:3rem 1.5rem 5rem;
+  max-width:820px;margin:0 auto;
+  animation:stepIn .5s ease both;
+}
+.step.active{display:block;}
+
+@keyframes stepIn{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.step-label{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.7rem;letter-spacing:.3em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:.75rem;
+}
+.step-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,5vw,2.8rem);
+  font-weight:700;color:var(--ink);
+  line-height:1.2;margin-bottom:.75rem;
+}
+.step-desc{
+  font-size:1.1rem;color:var(--warm-grey);
+  max-width:540px;line-height:1.6;margin-bottom:2.5rem;
+  font-family:'Cormorant Garamond',serif;
+}
+
+/* ============================================================
+   CHOICE CARDS
+   ============================================================ */
+.choice-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+}
+.choice-card{
+  border:1.5px solid var(--border);
+  background:white;
+  padding:1.75rem;
+  cursor:pointer;
+  transition:all .25s ease;
+  position:relative;overflow:hidden;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);
+}
+.choice-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(201,151,58,.05),transparent);
+  opacity:0;transition:opacity .25s;
+}
+.choice-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:var(--shadow)}
+.choice-card:hover::before{opacity:1}
+.choice-card.selected{
+  border-color:var(--gold);
+  background:linear-gradient(135deg,rgba(201,151,58,.08),rgba(201,151,58,.02));
+  box-shadow:var(--shadow);
+}
+.choice-card.selected .choice-check{opacity:1;transform:scale(1)}
+.choice-icon{font-size:2rem;margin-bottom:.75rem}
+.choice-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:.35rem;
+}
+.choice-desc{font-size:.9rem;color:var(--warm-grey);line-height:1.5}
+.choice-check{
+  position:absolute;top:.75rem;right:.75rem;
+  width:22px;height:22px;background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;color:var(--ink);font-weight:700;
+  opacity:0;transform:scale(.5);transition:all .2s ease;
+  clip-path:polygon(0 0,100% 0,100% 80%,80% 100%,0 100%);
+}
+
+/* ============================================================
+   FORM FIELDS
+   ============================================================ */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-grid.single{grid-template-columns:1fr}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:.5rem}
+.field.full{grid-column:1/-1}
+.field label{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.75rem;letter-spacing:.15em;
+  color:var(--gold-muted);text-transform:uppercase;
+}
+.field input,.field textarea,.field select{
+  border:1px solid rgba(201,151,58,.25);
+  background:white;
+  padding:.85rem 1rem;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;color:var(--ink);
+  outline:none;transition:border .2s,box-shadow .2s;
+  border-radius:var(--r);
+}
+.field input:focus,.field textarea:focus,.field select:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,151,58,.12);
+}
+.field textarea{resize:vertical;min-height:100px}
+.field input::placeholder,.field textarea::placeholder{color:rgba(138,125,107,.5)}
+
+/* tag input */
+.tag-input-wrap{
+  border:1px solid rgba(201,151,58,.25);
+  background:white;
+  padding:.6rem .75rem;
+  display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;
+  border-radius:var(--r);cursor:text;
+  transition:border .2s,box-shadow .2s;
+  min-height:48px;
+}
+.tag-input-wrap:focus-within{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,151,58,.12);
+}
+.tag{
+  background:rgba(201,151,58,.15);
+  border:1px solid rgba(201,151,58,.3);
+  padding:.25rem .6rem;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.7rem;letter-spacing:.08em;color:var(--gold-muted);
+  display:flex;align-items:center;gap:.4rem;border-radius:2px;
+}
+.tag-remove{cursor:pointer;opacity:.6;font-size:.8rem;transition:opacity .2s}
+.tag-remove:hover{opacity:1;color:var(--rust)}
+.tag-input{
+  border:none;outline:none;background:transparent;
+  font-family:'Cormorant Garamond',serif;font-size:1rem;
+  color:var(--ink);flex:1;min-width:100px;padding:.25rem 0;
+}
+
+/* repeater */
+.repeater-item{
+  border:1px solid var(--border);
+  padding:1.5rem;background:white;
+  margin-bottom:1rem;position:relative;
+  border-radius:var(--r);
+  animation:stepIn .3s ease both;
+}
+.repeater-remove{
+  position:absolute;top:.75rem;right:.75rem;
+  background:rgba(155,58,34,.1);border:none;
+  color:var(--rust);cursor:pointer;
+  width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;border-radius:2px;transition:background .2s;
+}
+.repeater-remove:hover{background:rgba(155,58,34,.2)}
+.btn-add{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.65rem 1.25rem;
+  border:1.5px dashed rgba(201,151,58,.4);background:transparent;
+  font-family:'Josefin Sans',sans-serif;font-size:.75rem;
+  letter-spacing:.1em;color:var(--gold-muted);text-transform:uppercase;
+  cursor:pointer;border-radius:var(--r);transition:all .2s;margin-top:.5rem;
+}
+.btn-add:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,151,58,.05)}
+
+/* slider */
+.slider-wrap{display:flex;align-items:center;gap:1rem}
+.skill-slider{
+  flex:1;-webkit-appearance:none;height:4px;
+  background:rgba(201,151,58,.2);outline:none;border-radius:2px;
+}
+.skill-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;width:18px;height:18px;
+  background:var(--gold);border-radius:50%;cursor:pointer;
+  box-shadow:0 2px 8px rgba(201,151,58,.4);
+}
+.slider-val{
+  font-family:'DM Mono',monospace;font-size:.8rem;
+  color:var(--gold);min-width:30px;text-align:right;
+}
+
+/* image upload */
+.photo-upload{
+  display:flex;flex-direction:column;align-items:center;
+  border:2px dashed rgba(201,151,58,.3);padding:2rem;
+  background:rgba(201,151,58,.02);cursor:pointer;
+  border-radius:var(--r);transition:all .25s;text-align:center;
+}
+.photo-upload:hover{border-color:var(--gold);background:rgba(201,151,58,.05)}
+.photo-preview{
+  width:120px;height:120px;border-radius:50%;
+  object-fit:cover;border:3px solid var(--gold);
+  margin-bottom:1rem;display:none;
+}
+.photo-icon{font-size:3rem;margin-bottom:.75rem;opacity:.4}
+.photo-text{
+  font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--warm-grey)
+}
+
+/* ============================================================
+   NAVIGATION BUTTONS
+   ============================================================ */
+.step-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:3rem;padding-top:2rem;
+  border-top:1px solid var(--border);
+}
+.btn-next,.btn-back{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.85rem 1.75rem;font-family:'Josefin Sans',sans-serif;
+  font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  cursor:pointer;border:none;transition:all .25s;
+}
+.btn-next{
+  background:var(--ink);color:var(--gold);
+  clip-path:polygon(0 0,100% 0,100% 100%,10px 100%,0 calc(100% - 10px));
+}
+.btn-next:hover{background:var(--gold);color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn-back{
+  background:transparent;color:var(--warm-grey);
+  border:1px solid var(--border);border-radius:var(--r);
+}
+.btn-back:hover{border-color:var(--gold);color:var(--gold)}
+.btn-generate{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--ink);padding:1rem 2.5rem;
+  clip-path:polygon(0 0,100% 0,100% 100%,10px 100%,0 calc(100% - 10px));
+  font-size:.85rem;position:relative;overflow:hidden;
+}
+.btn-generate::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
+  transform:translateX(-100%);transition:transform .5s;
+}
+.btn-generate:hover::after{transform:translateX(100%)}
+
+/* ============================================================
+   ACHIEVEMENT CARDS
+   ============================================================ */
+.achievement-item{
+  border:1px solid var(--border);
+  padding:1.25rem;background:white;
+  display:grid;grid-template-columns:auto 1fr auto;
+  gap:1rem;align-items:start;
+  border-radius:var(--r);animation:stepIn .3s ease both;
+  margin-bottom:.75rem;
+}
+.ach-icon-wrap{
+  width:44px;height:44px;border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;background:var(--parchment);flex-shrink:0;
+  border-radius:2px;
+}
+
+/* ============================================================
+   GENERATING OVERLAY
+   ============================================================ */
+#generating{
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:var(--ink);
+  flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+}
+#generating.active{display:flex}
+.gen-spinner{
+  width:80px;height:80px;
+  border:2px solid rgba(201,151,58,.2);
+  border-top-color:var(--gold);
+  border-radius:50%;animation:spin 1s linear infinite;
+}
+.gen-text{
+  font-family:'Playfair Display',serif;font-size:1.4rem;
+  color:var(--parchment);font-style:italic;
+  animation:pulse 1.5s ease infinite;
+}
+.gen-sub{
+  font-family:'Josefin Sans',sans-serif;font-size:.7rem;
+  letter-spacing:.25em;color:var(--gold);text-transform:uppercase;opacity:.7;
+}
+
+/* ============================================================
+   CV PREVIEW
+   ============================================================ */
+#cv-result{display:none;background:var(--ink);}
+#cv-result.active{display:block;}
+.result-header{
+  background:var(--ink);padding:2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+  border-bottom:1px solid rgba(201,151,58,.2);
+}
+.result-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;color:var(--parchment);font-style:italic;
+}
+.result-actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn-download{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.75rem 1.5rem;
+  background:var(--gold);color:var(--ink);
+  font-family:'Josefin Sans',sans-serif;font-size:.75rem;
+  letter-spacing:.12em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:all .25s;
+  clip-path:polygon(0 0,100% 0,100% 100%,8px 100%,0 calc(100% - 8px));
+}
+.btn-download:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-restart{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.75rem 1.5rem;
+  background:transparent;color:rgba(245,239,227,.6);
+  font-family:'Josefin Sans',sans-serif;font-size:.75rem;
+  letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(201,151,58,.3);cursor:pointer;transition:all .25s;
+  border-radius:var(--r);
+}
+.btn-restart:hover{border-color:var(--gold);color:var(--parchment)}
+.cv-preview-wrap{
+  padding:2rem;display:flex;justify-content:center;
+}
+
+/* ============================================================
+   CV DOCUMENT STYLES (for preview + print)
+   ============================================================ */
+#cv-document{
+  width:100%;max-width:800px;
+  background:white;
+  box-shadow:var(--shadow-lg);
+  font-family:'Cormorant Garamond',serif;
+  color:#1a1008;
+}
+.cv-header-block{
+  padding:3rem 3rem 2rem;
+  display:grid;grid-template-columns:1fr auto;
+  gap:2rem;align-items:start;
+  border-bottom:2px solid #c9973a;
+  position:relative;
+}
+.cv-header-block::after{
+  content:'';position:absolute;bottom:-6px;left:3rem;right:3rem;
+  height:1px;background:rgba(201,151,58,.3);
+}
+.cv-name{
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem;font-weight:800;color:#1a1008;line-height:1;
+}
+.cv-role{
+  font-size:1.1rem;color:#c9973a;margin-top:.4rem;
+  font-style:italic;letter-spacing:.04em;
+}
+.cv-tagline{
+  font-size:.95rem;color:#8a7d6b;margin-top:.6rem;
+  max-width:440px;line-height:1.5;
+}
+.cv-contacts{
+  display:flex;flex-direction:column;gap:.4rem;
+  text-align:right;
+}
+.cv-contact-item{
+  font-family:'DM Mono',monospace;font-size:.72rem;color:#8a7d6b;
+}
+.cv-contact-item a{color:inherit;text-decoration:none}
+.cv-photo{
+  width:90px;height:90px;border-radius:50%;
+  object-fit:cover;border:2.5px solid #c9973a;
+  grid-row:1/3;grid-column:2;
+}
+.cv-body{
+  display:grid;grid-template-columns:1fr 2.2fr;
+  min-height:600px;
+}
+.cv-sidebar{
+  background:#1a1008;color:#f5efe3;
+  padding:2rem;
+}
+.cv-main{padding:2rem}
+.cv-section{margin-bottom:2rem}
+.cv-section-title{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;
+  color:#c9973a;margin-bottom:1rem;
+  display:flex;align-items:center;gap:.75rem;
+}
+.cv-section-title::after{
+  content:'';flex:1;height:1px;background:currentColor;opacity:.3;
+}
+.cv-skill-item{margin-bottom:.75rem}
+.cv-skill-name{
+  font-size:.85rem;color:rgba(245,239,227,.85);
+  margin-bottom:.35rem;font-family:'Josefin Sans',sans-serif;
+  font-weight:300;letter-spacing:.05em;
+}
+.cv-skill-bar{
+  height:3px;background:rgba(245,239,227,.1);border-radius:2px;overflow:hidden;
+}
+.cv-skill-fill{
+  height:100%;background:linear-gradient(90deg,#c9973a,#e8c97a);
+  border-radius:2px;
+}
+.cv-tag{
+  display:inline-block;
+  background:rgba(201,151,58,.15);border:1px solid rgba(201,151,58,.3);
+  padding:.2rem .55rem;font-size:.7rem;color:#e8c97a;
+  font-family:'Josefin Sans',sans-serif;letter-spacing:.08em;
+  margin:.2rem .2rem 0 0;border-radius:2px;
+}
+.cv-entry{margin-bottom:1.4rem;padding-bottom:1.4rem;border-bottom:1px solid rgba(201,151,58,.12)}
+.cv-entry:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.cv-entry-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.cv-entry-title{
+  font-family:'Playfair Display',serif;font-size:1.05rem;
+  font-weight:600;color:#1a1008;
+}
+.cv-entry-org{font-size:.9rem;color:#c9973a;margin-top:.1rem;font-style:italic}
+.cv-entry-date{
+  font-family:'DM Mono',monospace;font-size:.72rem;
+  color:#8a7d6b;white-space:nowrap;
+}
+.cv-entry-desc{
+  font-size:.92rem;color:#4a3f30;margin-top:.5rem;line-height:1.6;
+}
+.cv-bullet{display:flex;gap:.5rem;align-items:flex-start;margin-top:.3rem}
+.cv-bullet::before{content:'◆';color:#c9973a;font-size:.5rem;margin-top:.35rem;flex-shrink:0}
+.cv-sidebar .cv-section-title{color:#c9973a}
+.cv-sidebar .cv-entry{border-bottom-color:rgba(245,239,227,.08)}
+.cv-sidebar .cv-entry-title{color:#f5efe3;font-size:.95rem}
+.cv-sidebar .cv-entry-org{color:#e8c97a}
+.cv-sidebar .cv-entry-desc{color:rgba(245,239,227,.6)}
+.cv-summary{
+  font-size:1rem;color:#4a3f30;line-height:1.7;
+  padding:1rem;background:rgba(201,151,58,.04);
+  border-left:3px solid #c9973a;margin-bottom:2rem;
+  font-style:italic;
+}
+.cv-ach-item{
+  display:flex;gap:.75rem;align-items:flex-start;
+  margin-bottom:.85rem;
+}
+.cv-ach-icon{font-size:1.1rem;margin-top:.05rem;flex-shrink:0}
+.cv-ach-text{font-size:.9rem;color:rgba(245,239,227,.75);line-height:1.5}
+.cv-ach-title{color:#f5efe3;font-weight:600;display:block;margin-bottom:.15rem;font-size:.92rem}
+.cv-footer-strip{
+  padding:1rem 2rem;
+  background:#f5efe3;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid rgba(201,151,58,.2);
+}
+.cv-footer-brand{
+  font-family:'Josefin Sans',sans-serif;font-size:.65rem;
+  letter-spacing:.2em;color:rgba(201,151,58,.6);text-transform:uppercase;
+}
+.cv-footer-pg{
+  font-family:'DM Mono',monospace;font-size:.7rem;color:rgba(138,125,107,.5);
+}
+
+/* ============================================================
+   REVIEWS SECTION
+   ============================================================ */
+.reviews-section{
+  background:var(--parchment);
+  padding:5rem 2rem;border-top:1px solid var(--border);
+}
+.section-label{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.7rem;letter-spacing:.3em;color:var(--gold);
+  text-transform:uppercase;text-align:center;margin-bottom:.75rem;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;
+  color:var(--ink);text-align:center;margin-bottom:3rem;
+}
+.reviews-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.5rem;max-width:1000px;margin:0 auto;
+}
+.review-card{
+  background:white;padding:2rem;
+  border:1px solid var(--border);
+  position:relative;transition:all .25s;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);
+}
+.review-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.review-stars{color:var(--gold);font-size:1rem;letter-spacing:.1em;margin-bottom:.75rem}
+.review-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;color:var(--ink);line-height:1.6;
+  font-style:italic;margin-bottom:1rem;
+}
+.review-author{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:.72rem;letter-spacing:.1em;
+  color:var(--warm-grey);text-transform:uppercase;
+}
+.review-role{color:var(--gold);display:block;margin-top:.2rem}
+.review-quote-mark{
+  position:absolute;top:.75rem;right:1rem;
+  font-family:'Playfair Display',serif;font-size:3rem;
+  color:rgba(201,151,58,.12);line-height:1;pointer-events:none;
+}
+
+/* ============================================================
+   DONATE / FOOTER
+   ============================================================ */
+.donate-section{
+  background:var(--ink);padding:4rem 2rem;text-align:center;
+  border-top:1px solid rgba(201,151,58,.15);
+}
+.donate-title{
+  font-family:'Playfair Display',serif;font-size:1.8rem;
+  color:var(--parchment);margin-bottom:.75rem;
+}
+.donate-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;color:rgba(245,239,227,.55);
+  max-width:440px;margin:0 auto 2rem;line-height:1.6;
+}
+.upi-badge{
+  display:inline-block;
+  background:rgba(201,151,58,.1);border:1px solid rgba(201,151,58,.3);
+  padding:1rem 2rem;font-family:'DM Mono',monospace;
+  font-size:1.1rem;color:var(--gold);letter-spacing:.1em;
+  margin-bottom:2rem;border-radius:var(--r);
+}
+.footer-links{
+  display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;
+  margin-bottom:2rem;
+}
+.footer-link{
+  font-family:'Josefin Sans',sans-serif;font-size:.75rem;
+  letter-spacing:.15em;color:rgba(245,239,227,.4);
+  text-transform:uppercase;text-decoration:none;transition:color .2s;
+}
+.footer-link:hover{color:var(--gold)}
+.footer-copy{
+  font-family:'Josefin Sans',sans-serif;font-size:.65rem;
+  letter-spacing:.15em;color:rgba(245,239,227,.2);text-transform:uppercase;
+}
+.footer-copy a{color:var(--gold);text-decoration:none}
+
+/* ============================================================
+   QUOTE INTERSTITIALS
+   ============================================================ */
+.interstitial{
+  background:var(--ink);padding:3rem 2rem;
+  text-align:center;margin:2rem 0;
+  border-top:1px solid rgba(201,151,58,.2);
+  border-bottom:1px solid rgba(201,151,58,.2);
+}
+.interstitial .quote-text{color:var(--parchment)}
+.interstitial .quote-attr{color:var(--gold);opacity:.8}
+
+/* ============================================================
+   UTILITIES & ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes pulse{
+  0%,100%{opacity:1}50%{opacity:.4}
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.hidden{display:none!important}
+.text-gold{color:var(--gold)}
+.mt-1{margin-top:.5rem}
+.mt-2{margin-top:1rem}
+
+/* range colors */
+input[type=range]{accent-color:var(--gold)}
+
+/* print styles */
+@media print{
+  body>*:not(#cv-result){display:none!important}
+  #cv-result{display:block!important;background:white}
+  .result-header,.btn-download,.btn-restart,.reviews-section,.donate-section,.footer{display:none!important}
+  .cv-preview-wrap{padding:0}
+  #cv-document{box-shadow:none;max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     LANDING
+     ============================================================ -->
+<section id="landing">
+  <div class="landing-bg"></div>
+  <div class="ornament-top"></div>
+  <div class="ornament-bottom"></div>
+
+  <div class="brand-mark">Velvet Pages Presents</div>
+
+  <h1 class="landing-title">Velvet <em>CV</em></h1>
+  <p class="landing-sub">Where your career story becomes a masterpiece. Crafted with intention, designed for impact.</p>
+
+  <div class="divider-gold"><div class="divider-diamond"></div></div>
+
+  <button class="btn-primary" onclick="startWizard()">
+    Begin Your Story
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </button>
+
+  <div class="landing-stats">
+    <div class="stat"><div class="stat-num">12</div><div class="stat-lbl">CV Templates</div></div>
+    <div class="stat"><div class="stat-num">∞</div><div class="stat-lbl">Possibilities</div></div>
+    <div class="stat"><div class="stat-num">1</div><div class="stat-lbl">Perfect CV</div></div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- Quote Banner -->
+<div class="quote-banner">
+  <p class="quote-text">"A CV is not a list of your past. It is a declaration of your future — an invitation to the world to witness what you are becoming."</p>
+  <div class="quote-attr">— Mayukh Sarkar, Founder · Velvet Pages</div>
+</div>
+
+<!-- ============================================================
+     REVIEWS
+     ============================================================ -->
+<section class="reviews-section">
+  <div class="section-label">Velvetians Speak</div>
+  <h2 class="section-title">Stories of Transformation</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-quote-mark">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">I used Velvet CV before my campus placements. Got placed at a Fortune 500 company. The CV literally made recruiters stop and read every line.</p>
+      <div class="review-author">Priya Mehta<span class="review-role">Software Engineer, Bangalore</span></div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote-mark">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Three interviews in one week after I updated my CV with this tool. The guided process helped me articulate things I never knew to highlight.</p>
+      <div class="review-author">Aryan Das<span class="review-role">Product Manager, Mumbai</span></div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote-mark">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">As a creative professional, I needed a CV that felt like me. Velvet CV understood that. It is the most beautiful document I have ever owned.</p>
+      <div class="review-author">Shreya Iyer<span class="review-role">UI Designer, Hyderabad</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WIZARD
+     ============================================================ -->
+<div id="wizard">
+  <!-- Navigation -->
+  <nav class="wizard-nav">
+    <div class="nav-brand">Velvet <span>CV</span></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="progress-text" id="progressText">Step 1 of 8</div>
+  </nav>
+
+  <!-- ── STEP 1: Career Type ── -->
+  <div class="step active" id="step-1">
+    <div class="step-label">Step 01 — Career Identity</div>
+    <h2 class="step-title">What best describes<br><em style="font-style:italic;color:var(--gold)">your path?</em></h2>
+    <p class="step-desc">Your answer shapes the structure and tone of your entire CV. Choose honestly.</p>
+    <div class="choice-grid">
+      <div class="choice-card" onclick="selectChoice(this,'career','corporate')">
+        <div class="choice-check">✓</div>
+        <div class="choice-icon">🏛️</div>
+        <div class="choice-title">Corporate Professional</div>
+        <div class="choice-desc">Business, finance, operations, management — structured environments</div>
+      </div>
+      <div class="choice-card" onclick="selectChoice(this,'career','tech')">
+        <div class="choice-check">✓</div>
+        <div class="choice-icon">💻</div>
+        <div class="choice-title">Technology & Engineering</div>
+        <div class="choice-desc">Software, data, AI, DevOps — skill-forward roles</div>
+      </div>
+      <div class="choice-card" onclick="selectChoice(this,'career','creative')">
+        <div class="choice-check">✓</div>
+        <div class="choice-icon">🎨</div>
+        <div class="choice-title">Creative & Design</div>
+        <div class="choice-desc">UI/UX, art direction, content, branding — portfolio-driven</div>
+      </div>
+      <div class="choice-card" onclick="selectChoice(this,'career','academic')">
+        <div class="choice-check">✓</div>
+        <div class="choice-icon">📚</div>
+        <div class="choice-title">Academic & Research</div>
+        <div class="choice-desc">PhD, publications, teaching — scholarship-first</div>
+      </div>
+      <div class="choice-card" onclick="selectChoice(this,'career','startup')">
+        <div class="choice-check">✓</div>
+        <div class="choice-icon">🚀</div>
+        <div class="choice-title">Startup & Entrepreneurship</div>
+        <div class="choice-desc">Founders, builders, hustlers — impact & ownership</div>
+      </div>
+      <div class="choice-card" onclick="selectChoice(this,'career','freelance')">
+        <div class="choice-check">✓</div>
+        <div class="choice-icon">🌿</div>
+        <div class="choice-title">Freelance & Independent</div>
+        <div class="choice-desc">Consultants, creators, independent professionals</div>
+      </div>
+    </div>
+    <div class="step-nav">
+      <span></span>
+      <button class="btn-next" onclick="nextStep(1)">Continue <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+
+  <!-- ── STEP 2: Personal Info ── -->
+  <div class="step" id="step-2">
+    <div class="step-label">Step 02 — Your Identity</div>
+    <h2 class="step-title">Tell us <em style="font-style:italic;color:var(--gold)">who you are</em></h2>
+    <p class="step-desc">The foundation of every great story — a name, a role, a presence.</p>
+
+    <!-- Photo Upload -->
+    <div class="photo-upload" onclick="document.getElementById('photoInput').click()" id="photoUploadArea">
+      <img id="photoPreview" class="photo-preview" alt="Profile"/>
+      <div class="photo-icon" id="photoIcon">👤</div>
+      <div class="photo-text">Click to upload your professional photo (optional)</div>
+      <input type="file" id="photoInput" accept="image/*" style="display:none" onchange="handlePhoto(this)"/>
+    </div>
+
+    <div class="form-grid mt-2">
+      <div class="field">
+        <label>Full Name *</label>
+        <input type="text" id="fullName" placeholder="e.g. Arjun Krishnamurthy"/>
+      </div>
+      <div class="field">
+        <label>Professional Title *</label>
+        <input type="text" id="jobTitle" placeholder="e.g. Senior Product Designer"/>
+      </div>
+      <div class="field">
+        <label>Email Address *</label>
+        <input type="email" id="email" placeholder="you@example.com"/>
+      </div>
+      <div class="field">
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="+91 98765 43210"/>
+      </div>
+      <div class="field">
+        <label>Location</label>
+        <input type="text" id="location" placeholder="e.g. Kolkata, West Bengal"/>
+      </div>
+      <div class="field">
+        <label>LinkedIn / Portfolio URL</label>
+        <input type="url" id="website" placeholder="linkedin.com/in/yourname"/>
+      </div>
+      <div class="field full">
+        <label>Professional Tagline</label>
+        <input type="text" id="tagline" placeholder="One powerful sentence that defines you professionally"/>
+      </div>
+      <div class="field full">
+        <label>Professional Summary</label>
+        <textarea id="summary" rows="4" placeholder="Write 2–3 sentences about your expertise, impact, and what drives you. This is your opening statement — make it count."></textarea>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep(2)">← Back</button>
+      <button class="btn-next" onclick="nextStep(2)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 3: Experience ── -->
+  <div class="step" id="step-3">
+    <div class="step-label">Step 03 — Professional Experience</div>
+    <h2 class="step-title">Where have you <em style="font-style:italic;color:var(--gold)">made your mark?</em></h2>
+    <p class="step-desc">Add your work experience in reverse chronological order. Be specific about impact, not just duties.</p>
+
+    <div id="expContainer"></div>
+    <button class="btn-add" onclick="addExperience()">+ Add Experience</button>
+
+    <div class="interstitial mt-2">
+      <p class="quote-text">"Recruiters spend an average of 7 seconds on a CV. Every word must fight for its place."</p>
+      <div class="quote-attr">— Mayukh Sarkar, Founder · Velvet Pages</div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep(3)">← Back</button>
+      <button class="btn-next" onclick="nextStep(3)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 4: Education ── -->
+  <div class="step" id="step-4">
+    <div class="step-label">Step 04 — Education</div>
+    <h2 class="step-title">Your <em style="font-style:italic;color:var(--gold)">academic foundation</em></h2>
+    <p class="step-desc">Add your educational background. Include GPA, honours, or notable coursework if relevant.</p>
+
+    <div id="eduContainer"></div>
+    <button class="btn-add" onclick="addEducation()">+ Add Education</button>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep(4)">← Back</button>
+      <button class="btn-next" onclick="nextStep(4)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 5: Skills ── -->
+  <div class="step" id="step-5">
+    <div class="step-label">Step 05 — Skills & Expertise</div>
+    <h2 class="step-title">What are your <em style="font-style:italic;color:var(--gold)">superpowers?</em></h2>
+    <p class="step-desc">Rate your skills honestly. Authenticity impresses more than inflation.</p>
+
+    <div id="skillsContainer"></div>
+    <button class="btn-add" onclick="addSkill()">+ Add Skill</button>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin:2rem 0 1rem;color:var(--ink)">Technologies & Tools</h3>
+    <p style="font-size:.95rem;color:var(--warm-grey);margin-bottom:.75rem;font-family:'Cormorant Garamond',serif">Type and press Enter to add</p>
+    <div class="field">
+      <label>Tools, Languages & Technologies</label>
+      <div class="tag-input-wrap" id="toolsTagWrap" onclick="document.getElementById('toolsInput').focus()">
+        <input class="tag-input" id="toolsInput" placeholder="e.g. Figma, React, Python..." onkeydown="handleTagInput(event,'toolsTagWrap','toolsTags')"/>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep(5)">← Back</button>
+      <button class="btn-next" onclick="nextStep(5)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 6: Achievements ── -->
+  <div class="step" id="step-6">
+    <div class="step-label">Step 06 — Achievements & Awards</div>
+    <h2 class="step-title">Moments that <em style="font-style:italic;color:var(--gold)">defined you</em></h2>
+    <p class="step-desc">Awards, certifications, publications, records broken, projects shipped. Your highlights reel.</p>
+
+    <div id="achContainer"></div>
+    <button class="btn-add" onclick="addAchievement()">+ Add Achievement</button>
+
+    <div class="interstitial mt-2">
+      <p class="quote-text">"Achievements are not trophies to collect. They are proof that you chose difficulty over comfort — and won."</p>
+      <div class="quote-attr">— Mayukh Sarkar, Founder · Velvet Pages</div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep(6)">← Back</button>
+      <button class="btn-next" onclick="nextStep(6)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 7: Extra (conditional) ── -->
+  <div class="step" id="step-7">
+    <div class="step-label">Step 07 — Additional Details</div>
+    <h2 class="step-title">The details that <em style="font-style:italic;color:var(--gold)">complete you</em></h2>
+    <p class="step-desc">Languages, publications, volunteering, hobbies — the human behind the professional.</p>
+
+    <div class="form-grid">
+      <div class="field full">
+        <label>Languages Spoken</label>
+        <div class="tag-input-wrap" id="langTagWrap" onclick="document.getElementById('langInput').focus()">
+          <input class="tag-input" id="langInput" placeholder="e.g. English (Native), Bengali, Hindi..." onkeydown="handleTagInput(event,'langTagWrap','langTags')"/>
+        </div>
+      </div>
+      <div class="field full">
+        <label>Interests & Hobbies</label>
+        <div class="tag-input-wrap" id="hobbyTagWrap" onclick="document.getElementById('hobbyInput').focus()">
+          <input class="tag-input" id="hobbyInput" placeholder="e.g. Classical Music, Photography, Chess..." onkeydown="handleTagInput(event,'hobbyTagWrap','hobbyTags')"/>
+        </div>
+      </div>
+      <div class="field full">
+        <label>References / Note</label>
+        <textarea id="references" rows="3" placeholder="e.g. 'References available upon request' or specific references"></textarea>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep(7)">← Back</button>
+      <button class="btn-next" onclick="nextStep(7)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ── STEP 8: Review & Generate ── -->
+  <div class="step" id="step-8">
+    <div class="step-label">Step 08 — Final Review</div>
+    <h2 class="step-title">Your story is <em style="font-style:italic;color:var(--gold)">ready to be told</em></h2>
+    <p class="step-desc">Review your choices and generate your masterpiece CV.</p>
+
+    <div id="reviewSummary" style="background:white;border:1px solid var(--border);padding:2rem;border-radius:var(--r);margin-bottom:2rem;"></div>
+
+    <div style="background:rgba(201,151,58,.06);border:1px solid var(--border);padding:1.5rem;border-radius:var(--r);display:flex;gap:1rem;align-items:flex-start;">
+      <span style="font-size:1.5rem;flex-shrink:0">✨</span>
+      <div>
+        <p style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.4rem">Ready to generate?</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:.95rem;color:var(--warm-grey);line-height:1.5">Your CV will be generated in a beautiful, ATS-friendly format — ready to download as HTML and print to PDF directly from your browser.</p>
+      </div>
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep(8)">← Back</button>
+      <button class="btn-next btn-generate" onclick="generateCV()">✦ Generate My CV</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     GENERATING OVERLAY
+     ============================================================ -->
+<div id="generating">
+  <div class="gen-spinner"></div>
+  <div class="gen-text">Composing your masterpiece…</div>
+  <div class="gen-sub">Velvet Pages · Crafting with care</div>
+</div>
+
+<!-- ============================================================
+     CV RESULT
+     ============================================================ -->
+<div id="cv-result">
+  <div class="result-header">
+    <div class="result-title">Your Velvet CV is ready ✦</div>
+    <div class="result-actions">
+      <button class="btn-download" onclick="downloadCV()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download CV
+      </button>
+      <button class="btn-download" onclick="printCV()" style="background:rgba(201,151,58,.2);color:var(--gold)">
+        🖨 Print / PDF
+      </button>
+      <button class="btn-restart" onclick="restartWizard()">← Start Over</button>
+    </div>
+  </div>
+  <div class="cv-preview-wrap">
+    <div id="cv-document"><!-- populated by JS --></div>
+  </div>
+
+  <!-- Donate + Footer -->
+  <div class="donate-section">
+    <h3 class="donate-title">If this CV opens doors for you</h3>
+    <p class="donate-sub">Velvet CV is free, built with love by one person. If it helped you, a small gesture means the world.</p>
+    <div class="upi-badge">☕ UPI: 7029043459@upi</div>
+    <div class="footer-links">
+      <a class="footer-link" href="mailto:mayukhsarkar1319@gmail.com">✉ mayukhsarkar1319@gmail.com</a>
+      <a class="footer-link" href="#">↑ Build Another CV</a>
+    </div>
+    <p class="footer-copy">Crafted with intention by <a href="#">Mayukh Sarkar</a> · Founder, Velvet Pages &nbsp;·&nbsp; © 2025</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     FOOTER (Landing)
+     ============================================================ -->
+<footer style="background:var(--ink);padding:3rem 2rem;text-align:center;border-top:1px solid rgba(201,151,58,.1);">
+  <div class="brand-mark" style="margin-bottom:1rem;">Velvet Pages</div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:.95rem;color:rgba(245,239,227,.35);max-width:400px;margin:0 auto 1.5rem;line-height:1.6;">"Every great career begins with a single, courageous page."</p>
+  <div class="footer-links">
+    <a class="footer-link" href="mailto:mayukhsarkar1319@gmail.com">Contact</a>
+    <a class="footer-link" href="#">Privacy</a>
+  </div>
+  <p class="footer-copy" style="margin-top:1.5rem;">Built by <a href="mailto:mayukhsarkar1319@gmail.com" style="color:var(--gold);text-decoration:none;">Mayukh Sarkar</a> · Velvet Pages · UPI: 7029043459@upi</p>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* ─── State ─── */
+const state = {
+  career:'', photo:'', fullName:'', jobTitle:'', email:'', phone:'',
+  location:'', website:'', tagline:'', summary:'',
+  experience:[], education:[], skills:[], tools:[],
+  achievements:[], languages:[], hobbies:[], references:'',
+  currentStep:1, totalSteps:8
+};
+
+const tags = {toolsTags:[], langTags:[], hobbyTags:[]};
+
+/* ─── Landing → Wizard ─── */
+function startWizard(){
+  document.getElementById('landing').style.display='none';
+  document.querySelector('footer').style.display='none';
+  document.querySelector('.quote-banner').style.display='none';
+  document.querySelector('.reviews-section').style.display='none';
+  const w=document.getElementById('wizard');
+  w.classList.add('active');
+  addExperience(); addEducation(); addSkill(); addAchievement();
+  updateProgress();
+}
+
+function restartWizard(){
+  location.reload();
+}
+
+/* ─── Progress ─── */
+function updateProgress(){
+  const pct=(state.currentStep/state.totalSteps)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressText').textContent=`Step ${state.currentStep} of ${state.totalSteps}`;
+}
+
+/* ─── Step Navigation ─── */
+function nextStep(from){
+  const s=document.getElementById('step-'+from);
+  s.classList.remove('active');
+  const next=from+1;
+  state.currentStep=next;
+  if(next===8) buildReview();
+  const ns=document.getElementById('step-'+next);
+  if(ns){ns.classList.add('active');}
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function prevStep(from){
+  document.getElementById('step-'+from).classList.remove('active');
+  const prev=from-1;
+  state.currentStep=prev;
+  document.getElementById('step-'+prev).classList.add('active');
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ─── Choice Selection ─── */
+function selectChoice(el, key, val){
+  const grid=el.closest('.choice-grid');
+  grid.querySelectorAll('.choice-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  state[key]=val;
+}
+
+/* ─── Photo ─── */
+function handlePhoto(input){
+  const file=input.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    state.photo=e.target.result;
+    const prev=document.getElementById('photoPreview');
+    prev.src=e.target.result;
+    prev.style.display='block';
+    document.getElementById('photoIcon').style.display='none';
+  };
+  reader.readAsDataURL(file);
+}
+
+/* ─── Tag Inputs ─── */
+function handleTagInput(e, wrapId, tagsKey){
+  if(e.key==='Enter'||e.key===','){
+    e.preventDefault();
+    const input=e.target;
+    const val=input.value.trim().replace(',','');
+    if(!val)return;
+    tags[tagsKey].push(val);
+    renderTag(wrapId, tagsKey, val, tags[tagsKey].length-1);
+    input.value='';
+  }
+  if(e.key==='Backspace'&&e.target.value===''&&tags[tagsKey].length>0){
+    tags[tagsKey].pop();
+    const wrap=document.getElementById(wrapId);
+    const allTags=wrap.querySelectorAll('.tag');
+    if(allTags.length)allTags[allTags.length-1].remove();
+  }
+}
+function renderTag(wrapId, tagsKey, val, idx){
+  const wrap=document.getElementById(wrapId);
+  const t=document.createElement('div');
+  t.className='tag';
+  t.innerHTML=`${val} <span class="tag-remove" onclick="removeTag('${wrapId}','${tagsKey}',${idx},this)">×</span>`;
+  wrap.insertBefore(t, wrap.querySelector('.tag-input'));
+}
+function removeTag(wrapId, tagsKey, idx, el){
+  tags[tagsKey].splice(idx,1);
+  el.closest('.tag').remove();
+}
+
+/* ─── Experience ─── */
+let expCount=0;
+function addExperience(){
+  const c=document.getElementById('expContainer');
+  const id=expCount++;
+  const div=document.createElement('div');
+  div.className='repeater-item';
+  div.id='exp-'+id;
+  div.innerHTML=`
+    <button class="repeater-remove" onclick="removeItem('exp-${id}')">×</button>
+    <div class="form-grid">
+      <div class="field"><label>Job Title *</label><input type="text" id="expTitle${id}" placeholder="Senior Product Manager"/></div>
+      <div class="field"><label>Company / Organisation *</label><input type="text" id="expOrg${id}" placeholder="Acme Corp"/></div>
+      <div class="field"><label>Start Date</label><input type="text" id="expStart${id}" placeholder="Jan 2022"/></div>
+      <div class="field"><label>End Date</label><input type="text" id="expEnd${id}" placeholder="Present"/></div>
+      <div class="field full"><label>Key Responsibilities & Impact</label>
+        <textarea id="expDesc${id}" rows="3" placeholder="• Led a team of 8 engineers to ship...&#10;• Grew revenue by 40% through...&#10;• Reduced churn by redesigning..."></textarea>
+      </div>
+    </div>`;
+  c.appendChild(div);
+}
+
+/* ─── Education ─── */
+let eduCount=0;
+function addEducation(){
+  const c=document.getElementById('eduContainer');
+  const id=eduCount++;
+  const div=document.createElement('div');
+  div.className='repeater-item';
+  div.id='edu-'+id;
+  div.innerHTML=`
+    <button class="repeater-remove" onclick="removeItem('edu-${id}')">×</button>
+    <div class="form-grid">
+      <div class="field"><label>Degree / Qualification *</label><input type="text" id="eduDeg${id}" placeholder="B.Tech Computer Science"/></div>
+      <div class="field"><label>Institution *</label><input type="text" id="eduInst${id}" placeholder="IIT Kharagpur"/></div>
+      <div class="field"><label>Year</label><input type="text" id="eduYear${id}" placeholder="2018 – 2022"/></div>
+      <div class="field"><label>Grade / CGPA / Distinction</label><input type="text" id="eduGrade${id}" placeholder="8.7 CGPA / First Class"/></div>
+      <div class="field full"><label>Notable Coursework / Activities</label><input type="text" id="eduNote${id}" placeholder="Data Structures, Machine Learning, Robotics Club President"/></div>
+    </div>`;
+  c.appendChild(div);
+}
+
+/* ─── Skills ─── */
+let skillCount=0;
+function addSkill(){
+  const c=document.getElementById('skillsContainer');
+  const id=skillCount++;
+  const div=document.createElement('div');
+  div.className='repeater-item';
+  div.id='skill-'+id;
+  div.style.display='grid';
+  div.style.gridTemplateColumns='1fr auto 60px';
+  div.style.gap='1rem';
+  div.style.alignItems='center';
+  div.innerHTML=`
+    <div class="field" style="margin:0"><label>Skill Name</label><input type="text" id="skillName${id}" placeholder="e.g. Python, Leadership, Figma"/></div>
+    <div style="padding-top:1.5rem">
+      <input type="range" class="skill-slider" id="skillLevel${id}" min="10" max="100" value="75" oninput="document.getElementById('skillVal${id}').textContent=this.value+'%'"/>
+    </div>
+    <div style="padding-top:1.4rem;text-align:right"><span class="slider-val" id="skillVal${id}">75%</span></div>
+    <button class="repeater-remove" style="position:static;margin-top:1.5rem" onclick="removeItem('skill-${id}')">×</button>`;
+  c.appendChild(div);
+}
+
+/* ─── Achievements ─── */
+let achCount=0;
+function addAchievement(){
+  const c=document.getElementById('achContainer');
+  const id=achCount++;
+  const div=document.createElement('div');
+  div.className='repeater-item';
+  div.id='ach-'+id;
+  div.innerHTML=`
+    <button class="repeater-remove" onclick="removeItem('ach-${id}')">×</button>
+    <div class="form-grid">
+      <div class="field"><label>Achievement Title *</label><input type="text" id="achTitle${id}" placeholder="National Hackathon Winner"/></div>
+      <div class="field"><label>Issuing Organisation</label><input type="text" id="achOrg${id}" placeholder="Google, NASSCOM, etc."/></div>
+      <div class="field"><label>Year</label><input type="text" id="achYear${id}" placeholder="2023"/></div>
+      <div class="field"><label>Icon (emoji)</label><input type="text" id="achIcon${id}" placeholder="🏆" maxlength="4"/></div>
+      <div class="field full"><label>Description (optional)</label><input type="text" id="achDesc${id}" placeholder="Brief description of the achievement and its impact"/></div>
+    </div>`;
+  c.appendChild(div);
+}
+
+function removeItem(id){
+  const el=document.getElementById(id);
+  if(el)el.remove();
+}
+
+/* ─── Collect State ─── */
+function collectState(){
+  state.fullName=v('fullName');state.jobTitle=v('jobTitle');
+  state.email=v('email');state.phone=v('phone');
+  state.location=v('location');state.website=v('website');
+  state.tagline=v('tagline');state.summary=v('summary');
+  state.references=v('references');
+
+  // experience
+  state.experience=[];
+  for(let i=0;i<expCount;i++){
+    const t=v('expTitle'+i),o=v('expOrg'+i);
+    if(t||o) state.experience.push({title:t,org:o,start:v('expStart'+i),end:v('expEnd'+i),desc:v('expDesc'+i)});
+  }
+  // education
+  state.education=[];
+  for(let i=0;i<eduCount;i++){
+    const d=v('eduDeg'+i),inst=v('eduInst'+i);
+    if(d||inst) state.education.push({deg:d,inst,year:v('eduYear'+i),grade:v('eduGrade'+i),note:v('eduNote'+i)});
+  }
+  // skills
+  state.skills=[];
+  for(let i=0;i<skillCount;i++){
+    const n=v('skillName'+i);
+    if(n){const el=document.getElementById('skillLevel'+i);state.skills.push({name:n,level:el?el.value:75});}
+  }
+  // achievements
+  state.achievements=[];
+  for(let i=0;i<achCount;i++){
+    const t=v('achTitle'+i);
+    if(t) state.achievements.push({title:t,org:v('achOrg'+i),year:v('achYear'+i),icon:v('achIcon'+i)||'🏆',desc:v('achDesc'+i)});
+  }
+  state.tools=[...tags.toolsTags];
+  state.languages=[...tags.langTags];
+  state.hobbies=[...tags.hobbyTags];
+}
+
+function v(id){const el=document.getElementById(id);return el?el.value.trim():'';}
+
+/* ─── Review Summary ─── */
+function buildReview(){
+  collectState();
+  const r=document.getElementById('reviewSummary');
+  const items=[
+    ['Career Type', state.career||'—'],
+    ['Name', state.fullName||'—'],
+    ['Title', state.jobTitle||'—'],
+    ['Email', state.email||'—'],
+    ['Experience Entries', state.experience.length],
+    ['Education Entries', state.education.length],
+    ['Skills', state.skills.length],
+    ['Achievements', state.achievements.length],
+    ['Tools', state.tools.join(', ')||'—'],
+    ['Languages', state.languages.join(', ')||'—'],
+  ];
+  r.innerHTML=`<h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:1.25rem;color:var(--ink)">Summary of Your Story</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem 2rem;">
+  ${items.map(([k,v])=>`<div style="display:flex;flex-direction:column;gap:.2rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)">
+    <span style="font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:.15em;color:var(--gold-muted);text-transform:uppercase">${k}</span>
+    <span style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ink)">${v}</span>
+  </div>`).join('')}
+  </div>`;
+}
+
+/* ─── Generate CV ─── */
+function generateCV(){
+  collectState();
+  document.getElementById('generating').classList.add('active');
+  document.getElementById('wizard').style.display='none';
+  setTimeout(()=>{
+    buildCVDocument();
+    document.getElementById('generating').classList.remove('active');
+    const result=document.getElementById('cv-result');
+    result.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  },2200);
+}
+
+/* ─── Build CV DOM ─── */
+function buildCVDocument(){
+  const d=document.getElementById('cv-document');
+  const s=state;
+
+  // colour accent per career
+  const accent={
+    corporate:'#1a4a6b',tech:'#1a3a2a',creative:'#6b1a4a',
+    academic:'#2a1a4a',startup:'#4a2a1a',freelance:'#1a3a4a'
+  }[s.career]||'#1a1008';
+
+  // format desc bullets
+  function fmtDesc(txt){
+    if(!txt)return'';
+    const lines=txt.split('\n').map(l=>l.trim()).filter(Boolean);
+    return lines.map(l=>`<div class="cv-bullet">${l.replace(/^[•\-\*]\s*/,'')}</div>`).join('');
+  }
+
+  let photoHTML='';
+  if(s.photo){
+    photoHTML=`<img src="${s.photo}" class="cv-photo" alt="Profile Photo"/>`;
+  }
+
+  // Skills sidebar
+  let skillsHTML='';
+  if(s.skills.length){
+    skillsHTML=`<div class="cv-section">
+    <div class="cv-section-title">Core Skills</div>
+    ${s.skills.map(sk=>`<div class="cv-skill-item">
+      <div class="cv-skill-name">${sk.name}</div>
+      <div class="cv-skill-bar"><div class="cv-skill-fill" style="width:${sk.level}%"></div></div>
+    </div>`).join('')}
+    </div>`;
+  }
+
+  // Tools tags
+  let toolsHTML='';
+  if(s.tools.length){
+    toolsHTML=`<div class="cv-section">
+    <div class="cv-section-title">Technologies</div>
+    ${s.tools.map(t=>`<span class="cv-tag">${t}</span>`).join('')}
+    </div>`;
+  }
+
+  // Languages
+  let langHTML='';
+  if(s.languages.length){
+    langHTML=`<div class="cv-section">
+    <div class="cv-section-title">Languages</div>
+    ${s.languages.map(l=>`<span class="cv-tag">${l}</span>`).join('')}
+    </div>`;
+  }
+
+  // Hobbies
+  let hobbyHTML='';
+  if(s.hobbies.length){
+    hobbyHTML=`<div class="cv-section">
+    <div class="cv-section-title">Interests</div>
+    ${s.hobbies.map(h=>`<span class="cv-tag">${h}</span>`).join('')}
+    </div>`;
+  }
+
+  // Achievements sidebar
+  let achHTML='';
+  if(s.achievements.length){
+    achHTML=`<div class="cv-section">
+    <div class="cv-section-title">Awards & Honours</div>
+    ${s.achievements.map(a=>`<div class="cv-ach-item">
+      <span class="cv-ach-icon">${a.icon}</span>
+      <div class="cv-ach-text">
+        <span class="cv-ach-title">${a.title}${a.year?' · '+a.year:''}</span>
+        ${a.org?`<span style="color:#c9973a;font-size:.8rem;display:block;margin-bottom:.2rem">${a.org}</span>`:''}
+        ${a.desc||''}
+      </div>
+    </div>`).join('')}
+    </div>`;
+  }
+
+  // Experience
+  let expHTML='';
+  if(s.experience.length){
+    expHTML=`<div class="cv-section">
+    <div class="cv-section-title">Professional Experience</div>
+    ${s.experience.map(e=>`<div class="cv-entry">
+      <div class="cv-entry-header">
+        <div>
+          <div class="cv-entry-title">${e.title}</div>
+          <div class="cv-entry-org">${e.org}</div>
+        </div>
+        <div class="cv-entry-date">${e.start}${e.end?' – '+e.end:''}</div>
+      </div>
+      <div class="cv-entry-desc">${fmtDesc(e.desc)}</div>
+    </div>`).join('')}
+    </div>`;
+  }
+
+  // Education
+  let eduHTML='';
+  if(s.education.length){
+    eduHTML=`<div class="cv-section">
+    <div class="cv-section-title">Education</div>
+    ${s.education.map(e=>`<div class="cv-entry">
+      <div class="cv-entry-header">
+        <div>
+          <div class="cv-entry-title">${e.deg}</div>
+          <div class="cv-entry-org">${e.inst}</div>
+        </div>
+        <div class="cv-entry-date">${e.year}</div>
+      </div>
+      ${e.grade?`<div class="cv-entry-desc" style="margin-top:.3rem"><strong>Grade:</strong> ${e.grade}</div>`:''}
+      ${e.note?`<div class="cv-entry-desc">${e.note}</div>`:''}
+    </div>`).join('')}
+    </div>`;
+  }
+
+  // References
+  let refHTML='';
+  if(s.references){
+    refHTML=`<div class="cv-section"><div class="cv-section-title">References</div>
+    <p style="font-size:.9rem;color:#8a7d6b;font-style:italic">${s.references}</p></div>`;
+  }
+
+  d.innerHTML=`
+    <div class="cv-header-block" style="border-bottom-color:${accent}">
+      <div>
+        <div class="cv-name">${s.fullName||'Your Name'}</div>
+        <div class="cv-role" style="color:${accent}">${s.jobTitle||'Professional Title'}</div>
+        ${s.tagline?`<div class="cv-tagline">${s.tagline}</div>`:''}
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.75rem">
+        ${photoHTML}
+        <div class="cv-contacts">
+          ${s.email?`<div class="cv-contact-item">✉ ${s.email}</div>`:''}
+          ${s.phone?`<div class="cv-contact-item">☎ ${s.phone}</div>`:''}
+          ${s.location?`<div class="cv-contact-item">⌖ ${s.location}</div>`:''}
+          ${s.website?`<div class="cv-contact-item"><a href="https://${s.website.replace(/^https?:\/\//,'')}" target="_blank">⊹ ${s.website.replace(/^https?:\/\//,'')}</a></div>`:''}
+        </div>
+      </div>
+    </div>
+    <div class="cv-body">
+      <div class="cv-sidebar">
+        ${skillsHTML}
+        ${toolsHTML}
+        ${langHTML}
+        ${hobbyHTML}
+        ${achHTML}
+      </div>
+      <div class="cv-main">
+        ${s.summary?`<div class="cv-summary">${s.summary}</div>`:''}
+        ${expHTML}
+        ${eduHTML}
+        ${refHTML}
+      </div>
+    </div>
+    <div class="cv-footer-strip">
+      <span class="cv-footer-brand">Crafted with Velvet CV · velvet-pages.github.io</span>
+      <span class="cv-footer-pg">Page 1</span>
+    </div>`;
+}
+
+/* ─── Download ─── */
+function downloadCV(){
+  const cvHTML=document.getElementById('cv-document').outerHTML;
+  const full=`<!DOCTYPE html>
+<html><head><meta charset="UTF-8"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@300;400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f5efe3;display:flex;justify-content:center;padding:40px 20px;font-family:'Cormorant Garamond',Georgia,serif}
+#cv-document{width:800px;background:white;box-shadow:0 20px 80px rgba(0,0,0,.15)}
+.cv-header-block{padding:3rem 3rem 2rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;border-bottom:2px solid #c9973a;position:relative}
+.cv-header-block::after{content:'';position:absolute;bottom:-6px;left:3rem;right:3rem;height:1px;background:rgba(201,151,58,.3)}
+.cv-name{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:800;color:#1a1008;line-height:1}
+.cv-role{font-size:1.1rem;color:#c9973a;margin-top:.4rem;font-style:italic}
+.cv-tagline{font-size:.95rem;color:#8a7d6b;margin-top:.6rem;max-width:440px;line-height:1.5}
+.cv-contacts{display:flex;flex-direction:column;gap:.4rem;text-align:right}
+.cv-contact-item{font-family:'DM Mono',monospace;font-size:.72rem;color:#8a7d6b}
+.cv-contact-item a{color:inherit;text-decoration:none}
+.cv-photo{width:90px;height:90px;border-radius:50%;object-fit:cover;border:2.5px solid #c9973a}
+.cv-body{display:grid;grid-template-columns:1fr 2.2fr;min-height:600px}
+.cv-sidebar{background:#1a1008;color:#f5efe3;padding:2rem}
+.cv-main{padding:2rem}
+.cv-section{margin-bottom:2rem}
+.cv-section-title{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:#c9973a;margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+.cv-section-title::after{content:'';flex:1;height:1px;background:currentColor;opacity:.3}
+.cv-skill-item{margin-bottom:.75rem}
+.cv-skill-name{font-size:.85rem;color:rgba(245,239,227,.85);margin-bottom:.35rem;font-family:'Josefin Sans',sans-serif;font-weight:300;letter-spacing:.05em}
+.cv-skill-bar{height:3px;background:rgba(245,239,227,.1);border-radius:2px;overflow:hidden}
+.cv-skill-fill{height:100%;background:linear-gradient(90deg,#c9973a,#e8c97a);border-radius:2px}
+.cv-tag{display:inline-block;background:rgba(201,151,58,.15);border:1px solid rgba(201,151,58,.3);padding:.2rem .55rem;font-size:.7rem;color:#e8c97a;font-family:'Josefin Sans',sans-serif;letter-spacing:.08em;margin:.2rem .2rem 0 0;border-radius:2px}
+.cv-entry{margin-bottom:1.4rem;padding-bottom:1.4rem;border-bottom:1px solid rgba(201,151,58,.12)}
+.cv-entry:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.cv-entry-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap}
+.cv-entry-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:#1a1008}
+.cv-entry-org{font-size:.9rem;color:#c9973a;margin-top:.1rem;font-style:italic}
+.cv-entry-date{font-family:'DM Mono',monospace;font-size:.72rem;color:#8a7d6b;white-space:nowrap}
+.cv-entry-desc{font-size:.92rem;color:#4a3f30;margin-top:.5rem;line-height:1.6}
+.cv-bullet{display:flex;gap:.5rem;align-items:flex-start;margin-top:.3rem}
+.cv-bullet::before{content:'◆';color:#c9973a;font-size:.5rem;margin-top:.35rem;flex-shrink:0}
+.cv-sidebar .cv-section-title{color:#c9973a}
+.cv-sidebar .cv-entry{border-bottom-color:rgba(245,239,227,.08)}
+.cv-sidebar .cv-entry-title{color:#f5efe3;font-size:.95rem}
+.cv-sidebar .cv-entry-org{color:#e8c97a}
+.cv-sidebar .cv-entry-desc{color:rgba(245,239,227,.6)}
+.cv-summary{font-size:1rem;color:#4a3f30;line-height:1.7;padding:1rem;background:rgba(201,151,58,.04);border-left:3px solid #c9973a;margin-bottom:2rem;font-style:italic}
+.cv-ach-item{display:flex;gap:.75rem;align-items:flex-start;margin-bottom:.85rem}
+.cv-ach-icon{font-size:1.1rem;margin-top:.05rem;flex-shrink:0}
+.cv-ach-text{font-size:.9rem;color:rgba(245,239,227,.75);line-height:1.5}
+.cv-ach-title{color:#f5efe3;font-weight:600;display:block;margin-bottom:.15rem;font-size:.92rem}
+.cv-footer-strip{padding:1rem 2rem;background:#f5efe3;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(201,151,58,.2)}
+.cv-footer-brand{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:.2em;color:rgba(201,151,58,.6);text-transform:uppercase}
+.cv-footer-pg{font-family:'DM Mono',monospace;font-size:.7rem;color:rgba(138,125,107,.5)}
+@media print{body{background:white;padding:0}#cv-document{box-shadow:none;width:100%}}
+</style>
+<title>${state.fullName||'My'} CV — Velvet Pages</title>
+</head><body>${cvHTML}</body></html>`;
+  const blob=new Blob([full],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`${(state.fullName||'My').replace(/\s+/g,'-')}-Velvet-CV.html`;
+  a.click();
+}
+
+function printCV(){
+  window.print();
+}
+</script>
+</body>
+</html>
