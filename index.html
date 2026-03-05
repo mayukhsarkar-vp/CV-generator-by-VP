@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velvet Pages CV Creator</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #111;
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(90deg, #000, #222);
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 2px solid gold;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: gold;
+      margin: 0;
+    }
+    header p {
+      font-style: italic;
+      color: #ccc;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    .quote {
+      font-style: italic;
+      color: #aaa;
+      border-left: 3px solid gold;
+      padding-left: 1rem;
+      margin: 2rem 0;
+    }
+    .question {
+      margin: 1.5rem 0;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.5rem;
+      border: 1px solid #444;
+      border-radius: 5px;
+      background: #222;
+      color: #f5f5f5;
+    }
+    button {
+      background: gold;
+      color: #111;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background: #d4af37;
+    }
+    .reviews {
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-top: 2rem;
+    }
+    .review {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #333;
+      padding-bottom: 1rem;
+    }
+    footer {
+      background: #000;
+      color: #ccc;
+      text-align: center;
+      padding: 2rem;
+      border-top: 2px solid gold;
+    }
+    .highlight {
+      color: gold;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Velvet Pages CV Creator</h1>
+    <p>"Luxury is not excess, it is precision." – Mayukh Sarkar</p>
+  </header>
+
+  <section id="questions">
+    <h2>Answer a few questions to craft your CV</h2>
+    <div class="question">
+      <label>Full Name:</label>
+      <input type="text" id="name">
+    </div>
+    <div class="question">
+      <label>Email:</label>
+      <input type="email" id="email">
+    </div>
+    <div class="question">
+      <label>Phone:</label>
+      <input type="text" id="phone">
+    </div>
+    <div class="question">
+      <label>Upload Your Image:</label>
+      <input type="file" id="image" accept="image/*">
+    </div>
+    <div class="question">
+      <label>Achievements (comma separated):</label>
+      <textarea id="achievements"></textarea>
+    </div>
+    <div class="question">
+      <label>Education:</label>
+      <textarea id="education"></textarea>
+    </div>
+    <div class="question">
+      <label>Experience:</label>
+      <textarea id="experience"></textarea>
+    </div>
+    <div class="question">
+      <label>Skills:</label>
+      <textarea id="skills"></textarea>
+    </div>
+    <button onclick="generateCV()">Generate My CV</button>
+  </section>
+
+  <section class="quote">
+    "A CV should not just list your past, it should whisper your future." – Mayukh Sarkar
+  </section>
+
+  <section class="reviews">
+    <h2>User Reviews</h2>
+    <div class="review">
+      <p>"This is the most elegant CV I’ve ever had. It feels like art." – Arjun</p>
+    </div>
+    <div class="review">
+      <p>"Velvet Pages made me stand out in interviews instantly." – Priya</p>
+    </div>
+    <div class="review">
+      <p>"The design, the flow, the precision – unmatched." – Rahul</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Created by <span class="highlight">Mayukh Sarkar</span>, Founder of Velvet Pages</p>
+    <p>Support the project: Donate via UPI <span class="highlight">7029043459@upi</span></p>
+    <p>Contact: <span class="highlight">mayukhsarkar1319@gmail.com</span></p>
+  </footer>
+
+  <script>
+    function generateCV() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const achievements = document.getElementById('achievements').value.split(',');
+      const education = document.getElementById('education').value;
+      const experience = document.getElementById('experience').value;
+      const skills = document.getElementById('skills').value;
+
+      let cvContent = `
+        <h1 style="color:gold;">${name}</h1>
+        <p>Email: ${email} | Phone: ${phone}</p>
+        <h2>Achievements</h2>
+        <ul>${achievements.map(a => `<li>${a.trim()}</li>`).join('')}</ul>
+        <h2>Education</h2>
+        <p>${education}</p>
+        <h2>Experience</h2>
+        <p>${experience}</p>
+        <h2>Skills</h2>
+        <p>${skills}</p>
+      `;
+
+      const newWindow = window.open('', '_blank');
+      newWindow.document.write(`
+        <html>
+        <head><title>My CV</title></head>
+        <body style="font-family:Georgia,serif; background:#111; color:#f5f5f5; padding:2rem;">
+          ${cvContent}
+          <button onclick="window.print()" style="background:gold; color:#111; padding:1rem; border:none; border-radius:5px; margin-top:2rem;">Download as PDF</button>
+        </body>
+        </html>
+      `);
+    }
+  </script>
+</body>
+</html>
